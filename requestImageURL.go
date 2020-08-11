@@ -11,11 +11,10 @@ import (
 func FindImageURL(pageURL string) (string, error) {
 	doc, err := goquery.NewDocument(pageURL)
 	if err != nil {
-		fmt.Println(err)
+		return "", err
 	}
 	ogImageURL, ogImageErr := findOGImage(doc)
-	fmt.Println(ogImageURL, ogImageErr)
-	return ogImageURL, nil
+	return ogImageURL, ogImageErr
 }
 
 func findOGImage(pageDocument *goquery.Document) (imageURL string, err error) {
