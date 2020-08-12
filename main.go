@@ -11,7 +11,7 @@ func main() {
 		websiteURL, sanitisationError := SanitiseURL(rawWebsiteURL)
 		if sanitisationError != nil {
 			c.JSON(400, gin.H{
-				"error": "Something went wrong b",
+				"error": "Something went wrong while parsing the website URL",
 			})
 			return
 		}
@@ -19,7 +19,7 @@ func main() {
 		imageURL, imageError := FindImageURL(websiteURL.String())
 		if imageError != nil {
 			c.JSON(400, gin.H{
-				"error": "Something went wrong c",
+				"error": "Something went wrong while getting the image",
 			})
 			return
 		}
